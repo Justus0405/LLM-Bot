@@ -1,0 +1,8 @@
+services:
+  llm-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: "llm-bot"
+    restart: "unless-stopped"
+    network_mode: "bridge"
