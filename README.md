@@ -33,7 +33,13 @@ git https://github.com/Justus0405/LLM-Bot.git
 cd LLM-Bot
 ```
 
-3. Build an run with docker:
+3. Create a .env file from .env.example:
+
+```shell
+nano .env
+```
+
+4. Build an run with docker:
 
 ```shell
 docker-compose up -d --build
