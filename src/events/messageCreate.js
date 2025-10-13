@@ -1,6 +1,5 @@
-require('dotenv').config({ quiet: true });
-const { OpenAI } = require('openai');
 const manageState = require('../libs/manageState');
+const { OpenAI } = require('openai');
 
 // LLM Interface URL and KEY.
 // Compatible with, OpenAI, Ollama & LLama.CPP.

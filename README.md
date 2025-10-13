@@ -19,6 +19,23 @@ It can connect to multiple AI backends including OpenAI, Ollama, and Llama.cpp a
 When mentioned in a chat, LLM-Bot listens, processes your question, and replies using the selected LLM API.
 Its designed to be modular, easy to configure, and perfect for integrating AI-powered assistants into your Discord community.
 
+## Commands
+
+User Commands:
+
+1. /help — Displays this message
+2. /prompt set — Set the current personality
+3. /prompt get — Get the current personality
+4. /model set — Set the current model
+5. /model get — Get the current model
+6. /api url — Change the current API URL
+7. /api key — Change the current API Key
+8. /thinking — Toggle display of LLM thinking sections
+
+> [!NOTE]
+> All of these configuration options above can & need to be defined in .env .
+> By default these commands require the "ModerateMembers" permission as a saftey measure, this can however be overwritten in the integrations tab of your guild.
+
 ## Installation
 
 1. Clone the repository:

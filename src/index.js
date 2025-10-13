@@ -10,11 +10,15 @@ const client = new Client({
     ]
 });
 
-// Bot token from .env file
+// Bot token from .env file.
 client.login(process.env.TOKEN);
 
-// Call functions
+// Call functions.
 require('./events/clientReady')(client);
 
-// Events
+// Register Global Commands.
+require('./libs/registerGlobalCommands');
+
+// Events.
 require('./events/messageCreate')(client);
+require('./events/interactionCreate')(client);
