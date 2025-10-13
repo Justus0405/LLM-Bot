@@ -1,11 +1,12 @@
 require('dotenv').config({ quiet: true });
 const { OpenAI } = require('openai');
+const manageState = require('../libs/manageState');
 
 // LLM Interface URL and KEY.
 // Compatible with, OpenAI, Ollama & LLama.CPP.
 const openai = new OpenAI({
-    baseURL: process.env.API_URL,
-    apiKey: process.env.API_KEY,
+    baseURL: manageState.API_URL,
+    apiKey: manageState.API_KEY,
 });
 
 module.exports = (client) => {
@@ -29,7 +30,7 @@ module.exports = (client) => {
 
         try {
             // Get the username of the message author.
-            const username = message.author.username;
+            const username = message.author.globalName;
 
             // Remove the id of the bot.
             // Converts "@BOT_ID Hello!" -> "Hello!".
@@ -37,13 +38,14 @@ module.exports = (client) => {
 
             // Makes the prompt to look like "Justus0405 says: Hello!".
             const prompt = `${username} says: ${userMessage}`;
+            //console.log(`[  ] ${prompt}`);
 
             const response = await openai.chat.completions.create({
-                model: process.env.AI_MODEL,
+                model: manageState.AI_MODEL,
                 messages: [
                     {
                         role: 'system',
-                        content: process.env.AI_CONTEXT
+                        content: manageState.AI_CONTEXT
                     },
                     {
                         role: 'user',
@@ -52,17 +54,36 @@ module.exports = (client) => {
                 ],
             });
 
+            // Get the LLMs response.
+            const responseMessage = response.choices[0].message.content;
+
+            // Formatting for thinking models.
+            let messageContent;
+
+            if (manageState.SHOW_THINKING === true) {
+                // This is for formatting the thinking section into a code block.
+                messageContent = responseMessage.replace("<think>", "```thoughts\n").replace("</think>", "```\n");
+            }
+            else if (manageState.SHOW_THINKING === false) {
+                // This is for removing the thinking section.
+                messageContent = responseMessage.replace(/<think>[\s\S]*?<\/think>/g, '');
+            }
+            else {
+                // No formatting needed.
+                messageContent = responseMessage;
+            }
+
             // Split the response if bigger than 2000 characters which is discords message limit for bots.
             // And non nitro users shm.
-            const responseMessage = response.choices[0].message.content;
             const chunkSizeLimit = 2000;
 
             // Just split the message after 2000 characters and send the reply for each message.
-            for (let i = 0; i < responseMessage.length; i += chunkSizeLimit) {
-                const chunk = responseMessage.substring(i, i + chunkSizeLimit);
+            for (let i = 0; i < messageContent.length; i += chunkSizeLimit) {
+                const chunk = messageContent.substring(i, i + chunkSizeLimit);
                 await message.reply(chunk);
             }
-        } catch {
+        } catch (error) {
+            console.log(error)
             await message.reply('Something went wrong, please try again.');
         } finally {
             // After everything is done, stop sending typing packets.
