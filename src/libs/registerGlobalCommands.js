@@ -104,6 +104,19 @@ const commands = [
             },
         ]
     },
+    {
+        name: 'debug',
+        description: 'Toggle verbose log messages',
+        default_member_permissions: PermissionFlagsBits.BanMembers.toString(),
+        options: [
+            {
+                name: 'option',
+                description: 'true or false',
+                type: ApplicationCommandOptionType.Boolean,
+                required: true
+            },
+        ]
+    },
 ];
 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);

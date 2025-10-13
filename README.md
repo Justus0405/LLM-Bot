@@ -21,7 +21,7 @@ Its designed to be modular, easy to configure, and perfect for integrating AI-po
 
 ## Commands
 
-User Commands:
+Moderator Commands:
 
 1. /help — Displays this message
 2. /prompt set — Set the current personality
@@ -31,6 +31,7 @@ User Commands:
 6. /api url — Change the current API URL
 7. /api key — Change the current API Key
 8. /thinking — Toggle display of LLM thinking sections
+9. /debug - Toggle verbose log messages
 
 > [!NOTE]
 > All of these configuration options above can & need to be defined in .env .

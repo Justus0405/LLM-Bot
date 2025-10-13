@@ -1,3 +1,4 @@
+const sendDebugMessage = require('../libs/sendDebugMessage');
 const manageState = require('../libs/manageState');
 const { OpenAI } = require('openai');
 
@@ -37,7 +38,8 @@ module.exports = (client) => {
 
             // Makes the prompt to look like "Justus0405 says: Hello!".
             const prompt = `${username} says: ${userMessage}`;
-            //console.log(`[  ] ${prompt}`);
+
+            sendDebugMessage(prompt);
 
             const response = await openai.chat.completions.create({
                 model: manageState.AI_MODEL,
@@ -71,6 +73,8 @@ module.exports = (client) => {
                 // No formatting needed.
                 messageContent = responseMessage;
             }
+
+            sendDebugMessage(messageContent);
 
             // Split the response if bigger than 2000 characters which is discords message limit for bots.
             // And non nitro users shm.

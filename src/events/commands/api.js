@@ -1,4 +1,5 @@
 const sendSuccessMessage = require('../../libs/sendSuccessMessage');
+const sendDebugMessage = require('../../libs/sendDebugMessage');
 const manageState = require('../../libs/manageState');
 
 async function api(interaction) {
@@ -11,6 +12,8 @@ async function api(interaction) {
 
             manageState.API_URL = apiURL;
 
+            sendDebugMessage(`Changed the API URL to: ${apiURL}`);
+
             sendSuccessMessage(interaction, `Successfully changed the API URL to:\n \`\`\`${apiURL}\`\`\``);
             break;
 
@@ -18,6 +21,8 @@ async function api(interaction) {
             const apiKey = interaction.options.getString('value');
 
             manageState.API_KEY = apiKey;
+
+            sendDebugMessage(`Changed the API Key to: ${apiKey}`);
 
             sendSuccessMessage(interaction, `Successfully changed the API Key to:\n \`\`\`${apiKey}\`\`\``);
             break;

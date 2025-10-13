@@ -4,6 +4,7 @@ const promptCommand = require('./commands/prompt')
 const modelCommand = require('./commands/model')
 const apiCommand = require('./commands/api')
 const thinkingCommand = require('./commands/thinking')
+const debugCommand = require('./commands/debug')
 
 module.exports = (client) => {
 
@@ -28,6 +29,9 @@ module.exports = (client) => {
                 break;
             case 'thinking':
                 thinkingCommand(interaction);
+                break;
+            case 'debug':
+                debugCommand(interaction);
                 break;
 
 

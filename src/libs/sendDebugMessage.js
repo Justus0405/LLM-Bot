@@ -1,0 +1,10 @@
+const manageState = require("./manageState");
+
+async function sendDebugMessage(message) {
+
+    if (manageState.SHOW_DEBUG === true) {
+        console.log(`[  ] ${message}`)
+    }
+}
+
+module.exports = sendDebugMessage;
