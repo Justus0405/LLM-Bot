@@ -12,14 +12,15 @@ async function prompt(interaction) {
 
             manageState.AI_CONTEXT = promptSet;
 
-            sendDebugMessage(`Changed the prompt to: ${prompt}`);
+            await sendDebugMessage(`Changed the prompt to: ${prompt}`);
 
-            sendSuccessMessage(interaction, `Successfully changed the prompt to:\n \`\`\`${promptSet}\`\`\``);
+            await sendSuccessMessage(interaction, `Successfully changed the prompt to:\n \`\`\`${promptSet}\`\`\``);
             break;
 
         case "get":
             const promptGet = manageState.AI_CONTEXT;
-            sendSuccessMessage(interaction, `Current prompt:\n \`\`\`${promptGet}\`\`\``);
+
+            await sendSuccessMessage(interaction, `Current prompt:\n \`\`\`${promptGet}\`\`\``);
             break;
 
         default:

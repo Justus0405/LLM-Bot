@@ -8,9 +8,9 @@ async function thinking(interaction) {
 
     manageState.SHOW_THINKING = choice;
 
-    sendDebugMessage(`Changed the thinking mode to: ${choice}`);
+    await sendDebugMessage(`Changed the thinking mode to: ${choice}`);
 
-    sendSuccessMessage(interaction, `Successfully set thinking mode to:\n \`\`\`${choice}\`\`\``);
+    await sendSuccessMessage(interaction, `Successfully set thinking mode to:\n \`\`\`${choice}\`\`\``);
 }
 
 module.exports = thinking

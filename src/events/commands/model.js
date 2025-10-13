@@ -12,14 +12,15 @@ async function model(interaction) {
 
             manageState.AI_MODEL = modelSet;
 
-            sendDebugMessage(`Changed the model to: ${modelSet}`);
+            await sendDebugMessage(`Changed the model to: ${modelSet}`);
 
-            sendSuccessMessage(interaction, `Successfully changed the model to:\n \`\`\`${modelSet}\`\`\``);
+            await sendSuccessMessage(interaction, `Successfully changed the model to:\n \`\`\`${modelSet}\`\`\``);
             break;
 
         case "get":
             const modelGet = manageState.AI_MODEL;
-            sendSuccessMessage(interaction, `Current model:\n \`\`\`${modelGet}\`\`\``);
+
+            await sendSuccessMessage(interaction, `Current model:\n \`\`\`${modelGet}\`\`\``);
             break;
 
         default:

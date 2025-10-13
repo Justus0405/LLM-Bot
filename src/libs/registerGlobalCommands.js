@@ -117,6 +117,11 @@ const commands = [
             },
         ]
     },
+    {
+        name: 'reset',
+        description: 'Restart the bot and revert to default settings',
+        default_member_permissions: PermissionFlagsBits.BanMembers.toString(),
+    },
 ];
 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);

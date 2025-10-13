@@ -32,6 +32,7 @@ Moderator Commands:
 7. /api key — Change the current API Key
 8. /thinking — Toggle display of LLM thinking sections
 9. /debug - Toggle verbose log messages
+10. /reset - Restart the bot and revert to default settings
 
 > [!NOTE]
 > All of these configuration options above can & need to be defined in .env .

@@ -17,6 +17,8 @@ async function help(interaction) {
                     '`/api url` — Change the current API URL',
                     '`/api key` — Change the current API Key',
                     '`/thinking` — Toggle display of LLM thinking sections',
+                    '`/debug` — Toggle verbose log messages',
+                    '`/reset` — Restart the bot and revert to default settings'
                 ].join('\n'),
                 inline: false,
             }

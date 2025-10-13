@@ -8,9 +8,9 @@ async function debug(interaction) {
 
     manageState.SHOW_DEBUG = choice;
 
-    sendDebugMessage(`Changed the debug mode to: ${choice}`);
+    await sendDebugMessage(`Changed the debug mode to: ${choice}`);
 
-    sendSuccessMessage(interaction, `Successfully set debug mode to:\n \`\`\`${choice}\`\`\``)
+    await sendSuccessMessage(interaction, `Successfully set debug mode to:\n \`\`\`${choice}\`\`\``)
 }
 
 module.exports = debug;

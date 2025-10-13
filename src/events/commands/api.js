@@ -12,9 +12,9 @@ async function api(interaction) {
 
             manageState.API_URL = apiURL;
 
-            sendDebugMessage(`Changed the API URL to: ${apiURL}`);
+            await sendDebugMessage(`Changed the API URL to: ${apiURL}`);
 
-            sendSuccessMessage(interaction, `Successfully changed the API URL to:\n \`\`\`${apiURL}\`\`\``);
+            await sendSuccessMessage(interaction, `Successfully changed the API URL to:\n \`\`\`${apiURL}\`\`\``);
             break;
 
         case "key":
@@ -22,9 +22,9 @@ async function api(interaction) {
 
             manageState.API_KEY = apiKey;
 
-            sendDebugMessage(`Changed the API Key to: ${apiKey}`);
+            await sendDebugMessage(`Changed the API Key to: ${apiKey}`);
 
-            sendSuccessMessage(interaction, `Successfully changed the API Key to:\n \`\`\`${apiKey}\`\`\``);
+            await sendSuccessMessage(interaction, `Successfully changed the API Key to:\n \`\`\`${apiKey}\`\`\``);
             break;
 
         default:
