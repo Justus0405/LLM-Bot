@@ -39,7 +39,7 @@ module.exports = (client) => {
             // Makes the prompt to look like "Justus0405 says: Hello!".
             const prompt = `${username} says: ${userMessage}`;
 
-            sendDebugMessage(prompt);
+            await sendDebugMessage(prompt);
 
             const response = await openai.chat.completions.create({
                 model: manageState.AI_MODEL,
@@ -74,7 +74,7 @@ module.exports = (client) => {
                 messageContent = responseMessage;
             }
 
-            sendDebugMessage(messageContent);
+            await sendDebugMessage(messageContent);
 
             // Split the response if bigger than 2000 characters which is discords message limit for bots.
             // And non nitro users shm.
