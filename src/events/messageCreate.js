@@ -87,7 +87,7 @@ module.exports = (client) => {
             }
         } catch (error) {
             console.log(error)
-            await message.reply('Something went wrong, please try again.');
+            await message.channel.send('Something went wrong, please try again.');
         } finally {
             // After everything is done, stop sending typing packets.
             clearInterval(sendTypingInterval);
