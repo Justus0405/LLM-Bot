@@ -4,6 +4,7 @@ const promptCommand = require('./commands/prompt')
 const modelCommand = require('./commands/model')
 const apiCommand = require('./commands/api')
 const thinkingCommand = require('./commands/thinking')
+const memoryCommand = require('./commands/memory')
 const debugCommand = require('./commands/debug')
 const resetCommand = require('./commands/reset')
 
@@ -30,6 +31,9 @@ module.exports = (client) => {
                 break;
             case 'thinking':
                 thinkingCommand(interaction);
+                break;
+            case 'memory':
+                memoryCommand(interaction);
                 break;
             case 'debug':
                 debugCommand(interaction);

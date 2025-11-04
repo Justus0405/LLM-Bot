@@ -1,4 +1,4 @@
-const { ActivityType } = require("discord.js");
+const { ActivityType } = require('discord.js');
 
 module.exports = (client) => {
     // This function runs code once the bot is ready.
@@ -20,7 +20,6 @@ module.exports = (client) => {
         // Update Presence every 1 minute.
         // This is needed because otherwise the status randomly gets blank idk.
         const sendPresenceInterval = setInterval(() => {
-            //console.log('[  ] Updating Presence...');
             updatePresence();
         }, 60000);
     });

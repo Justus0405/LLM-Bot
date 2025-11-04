@@ -1,14 +1,14 @@
-const sendSuccessMessage = require('../../libs/sendSuccessMessage');
-const sendDebugMessage = require('../../libs/sendDebugMessage');
-const manageState = require('../../libs/manageState');
+const sendSuccessMessage = require('../../libs/sends/sendSuccessMessage');
+const sendDebugMessage = require('../../libs/sends/sendDebugMessage');
+const manageState = require('../../libs/manages/manageState');
 
 async function thinking(interaction) {
 
-    const choice = interaction.options.getBoolean('option');
+    const choice = interaction.options.getBoolean('enabled');
 
     manageState.SHOW_THINKING = choice;
 
-    await sendDebugMessage(`Changed the thinking mode to: ${choice}`);
+    sendDebugMessage(`Changed the thinking mode to: ${choice}`);
 
     await sendSuccessMessage(interaction, `Successfully set thinking mode to:\n \`\`\`${choice}\`\`\``);
 }

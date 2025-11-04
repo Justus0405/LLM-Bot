@@ -31,8 +31,9 @@ Moderator Commands:
 6. /api url — Change the current API URL
 7. /api key — Change the current API Key
 8. /thinking — Toggle display of LLM thinking sections
-9. /debug - Toggle verbose log messages
-10. /reset - Restart the bot and revert to default settings
+9. /memory — Toggle message history (Requires large models)
+10. /debug — Toggle verbose log messages
+11. /reset — Restart the bot and revert to default settings
 
 > [!NOTE]
 > All of these configuration options above can & need to be defined in .env .

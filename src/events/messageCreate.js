@@ -1,5 +1,7 @@
-const sendDebugMessage = require('../libs/sendDebugMessage');
-const manageState = require('../libs/manageState');
+const manageMultipleMemory = require('../libs/manages/manageMultipleMemory');
+const manageSingleMemory = require('../libs/manages/manageSingleMemory');
+const sendDebugMessage = require('../libs/sends/sendDebugMessage');
+const manageState = require('../libs/manages/manageState');
 const { OpenAI } = require('openai');
 
 // LLM Interface URL and KEY.
@@ -29,34 +31,38 @@ module.exports = (client) => {
         }, 5000);
 
         try {
-            // Get the username of the message author.
-            const username = message.author.globalName;
+            // Array for roles and prompts.
+            let conversation = [];
 
-            // Remove the id of the bot.
-            // Converts "@BOT_ID Hello!" -> "Hello!".
-            const userMessage = message.content.replace(`<@${client.user.id}>`, '').trim();
+            // System prompt
+            conversation.push({
+                role: 'system',
+                content: manageState.AI_CONTEXT
+            });
 
-            // Makes the prompt to look like "Justus0405 says: Hello!".
-            const prompt = `${username} says: ${userMessage}`;
+            // Handle bot conversation memory.
+            if (manageState.ENABLE_MEMORY === true) {
 
-            await sendDebugMessage(prompt);
+                conversation = await manageMultipleMemory(client, message);
+            } else {
 
+                conversation = await manageSingleMemory(client, message);
+            }
+
+            // Print the conversation if debug is enabled.
+            sendDebugMessage(conversation);
+
+            // Send the chat to the LLM.
             const response = await openai.chat.completions.create({
                 model: manageState.AI_MODEL,
-                messages: [
-                    {
-                        role: 'system',
-                        content: manageState.AI_CONTEXT
-                    },
-                    {
-                        role: 'user',
-                        content: prompt,
-                    }
-                ],
+                messages: conversation,
             });
 
             // Get the LLMs response.
             const responseMessage = response.choices[0].message.content;
+
+            // Print the response if debug is enabled.
+            sendDebugMessage(responseMessage);
 
             // Formatting for thinking models.
             let messageContent;
@@ -73,8 +79,6 @@ module.exports = (client) => {
                 // No formatting needed.
                 messageContent = responseMessage;
             }
-
-            await sendDebugMessage(messageContent);
 
             // Split the response if bigger than 2000 characters which is discords message limit for bots.
             // And non nitro users shm.

@@ -1,6 +1,6 @@
-const sendSuccessMessage = require('../../libs/sendSuccessMessage');
-const sendDebugMessage = require('../../libs/sendDebugMessage');
-const manageState = require('../../libs/manageState');
+const sendSuccessMessage = require('../../libs/sends/sendSuccessMessage');
+const sendDebugMessage = require('../../libs/sends/sendDebugMessage');
+const manageState = require('../../libs/manages/manageState');
 
 async function prompt(interaction) {
 
@@ -12,7 +12,7 @@ async function prompt(interaction) {
 
             manageState.AI_CONTEXT = promptSet;
 
-            await sendDebugMessage(`Changed the prompt to: ${prompt}`);
+            sendDebugMessage(`Changed the prompt to: ${prompt}`);
 
             await sendSuccessMessage(interaction, `Successfully changed the prompt to:\n \`\`\`${promptSet}\`\`\``);
             break;

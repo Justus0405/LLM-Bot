@@ -1,9 +1,9 @@
-const sendSuccessMessage = require('../../libs/sendSuccessMessage');
-const sendDebugMessage = require('../../libs/sendDebugMessage');
+const sendSuccessMessage = require('../../libs/sends/sendSuccessMessage');
+const sendDebugMessage = require('../../libs/sends/sendDebugMessage');
 
 async function reset(interaction) {
 
-    await sendDebugMessage("Restarting the bot now...");
+    sendDebugMessage("Restarting the bot now...");
 
     await sendSuccessMessage(interaction, "Restarting the bot now...");
 

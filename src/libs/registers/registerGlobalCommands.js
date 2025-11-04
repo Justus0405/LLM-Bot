@@ -1,5 +1,4 @@
 require('dotenv').config({ quiet: true });
-const manageState = require('./manageState');
 const { REST, Routes, ApplicationCommandOptionType, PermissionFlagsBits, } = require('discord.js');
 
 const commands = [
@@ -97,7 +96,20 @@ const commands = [
         default_member_permissions: PermissionFlagsBits.BanMembers.toString(),
         options: [
             {
-                name: 'option',
+                name: 'enabled',
+                description: 'true or false',
+                type: ApplicationCommandOptionType.Boolean,
+                required: true
+            },
+        ]
+    },
+    {
+        name: 'memory',
+        description: 'Toggle message history (Requires large models)',
+        default_member_permissions: PermissionFlagsBits.BanMembers.toString(),
+        options: [
+            {
+                name: 'enabled',
                 description: 'true or false',
                 type: ApplicationCommandOptionType.Boolean,
                 required: true
@@ -110,7 +122,7 @@ const commands = [
         default_member_permissions: PermissionFlagsBits.BanMembers.toString(),
         options: [
             {
-                name: 'option',
+                name: 'enabled',
                 description: 'true or false',
                 type: ApplicationCommandOptionType.Boolean,
                 required: true

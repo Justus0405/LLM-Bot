@@ -1,6 +1,6 @@
-const sendSuccessMessage = require('../../libs/sendSuccessMessage');
-const sendDebugMessage = require('../../libs/sendDebugMessage');
-const manageState = require('../../libs/manageState');
+const sendSuccessMessage = require('../../libs/sends/sendSuccessMessage');
+const sendDebugMessage = require('../../libs/sends/sendDebugMessage');
+const manageState = require('../../libs/manages/manageState');
 
 async function model(interaction) {
 
@@ -12,7 +12,7 @@ async function model(interaction) {
 
             manageState.AI_MODEL = modelSet;
 
-            await sendDebugMessage(`Changed the model to: ${modelSet}`);
+            sendDebugMessage(`Changed the model to: ${modelSet}`);
 
             await sendSuccessMessage(interaction, `Successfully changed the model to:\n \`\`\`${modelSet}\`\`\``);
             break;
