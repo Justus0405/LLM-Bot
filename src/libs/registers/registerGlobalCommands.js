@@ -105,7 +105,7 @@ const commands = [
     },
     {
         name: 'memory',
-        description: 'Toggle message history (Requires large models)',
+        description: 'Toggle message history',
         default_member_permissions: PermissionFlagsBits.BanMembers.toString(),
         options: [
             {

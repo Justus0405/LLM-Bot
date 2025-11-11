@@ -1,17 +1,14 @@
-async function manageMultipleMemory(client, message) {
+async function manageMultipleMemory(client, message, conversation) {
 
-    // Array for roles and prompts.
-    let conversation = [];
-
-    // Get the last 10 messages.
-    let prevMessages = await message.channel.messages.fetch({ limit: 10 });
+    // Get the last 20 messages.
+    let prevMessages = await message.channel.messages.fetch({ limit: 20 });
 
     // Reverse because discord returns the latest message first.
     prevMessages.reverse();
 
     prevMessages.forEach((msg) => {
 
-        // if a message is from another bot, ignore it.
+        // Ignore messages from other bots.
         if (msg.author.bot && msg.author.id !== client.user.id) return;
 
         // Filter the message responses from the bot.
@@ -24,21 +21,24 @@ async function manageMultipleMemory(client, message) {
             return;
         }
 
-        // Get the username of the message author.
-        const username = msg.author.globalName;
+        // Ignore messages that dont mention the bot.
+        if (!msg.mentions.users.has(client.user.id)) return;
 
-        // Remove the id of the bot.
-        // Converts "@BOT_ID Hello!" -> "Hello!".
-        const userMessage = msg.content.replace(`<@${client.user.id}>`, '').trim();
+        // Filter the messages from the user the bot is responding to.
+        if (msg.author.id === message.author.id) {
 
-        // Makes the prompt to look like "Justus0405 says: Hello!".
-        const prompt = `${username} says: ${userMessage}`;
+            // Remove the id of the bot.
+            // Converts "@BOT_ID Hello!" -> "Hello!".
+            const prompt = msg.content.replace(`<@${client.user.id}>`, '').trim();
 
-        // Push all messages for the history as user into the conversation array.
-        conversation.push({
-            role: 'user',
-            content: prompt,
-        })
+            conversation.push({
+                role: 'user',
+                content: prompt,
+            });
+
+            return;
+        }
+
     });
 
     return conversation;

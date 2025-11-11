@@ -34,19 +34,24 @@ module.exports = (client) => {
             // Array for roles and prompts.
             let conversation = [];
 
+            // Get the username of the message author.
+            const username = message.author.globalName;
+
+            const systemContent = `${manageState.AI_CONTEXT}. The username of the person you are talking to is ${username}.`;
+
             // System prompt
             conversation.push({
                 role: 'system',
-                content: manageState.AI_CONTEXT
+                content: systemContent
             });
 
             // Handle bot conversation memory.
             if (manageState.ENABLE_MEMORY === true) {
 
-                conversation = await manageMultipleMemory(client, message);
+                conversation = await manageMultipleMemory(client, message, conversation);
             } else {
 
-                conversation = await manageSingleMemory(client, message);
+                conversation = await manageSingleMemory(client, message, conversation);
             }
 
             // Print the conversation if debug is enabled.
