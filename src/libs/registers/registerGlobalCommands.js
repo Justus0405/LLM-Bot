@@ -18,7 +18,7 @@ const commands = [
                 type: ApplicationCommandOptionType.Subcommand,
                 options: [
                     {
-                        name: 'value',
+                        name: 'prompt',
                         description: 'The personality to set',
                         type: ApplicationCommandOptionType.String,
                         required: true
@@ -43,7 +43,7 @@ const commands = [
                 type: ApplicationCommandOptionType.Subcommand,
                 options: [
                     {
-                        name: 'value',
+                        name: 'model',
                         description: 'The model to set',
                         type: ApplicationCommandOptionType.String,
                         required: true
@@ -68,7 +68,7 @@ const commands = [
                 type: ApplicationCommandOptionType.Subcommand,
                 options: [
                     {
-                        name: 'value',
+                        name: 'url',
                         description: 'The API URL',
                         type: ApplicationCommandOptionType.String,
                         required: true
@@ -81,7 +81,7 @@ const commands = [
                 type: ApplicationCommandOptionType.Subcommand,
                 options: [
                     {
-                        name: 'value',
+                        name: 'key',
                         description: 'The API Key',
                         type: ApplicationCommandOptionType.String,
                         required: true

@@ -8,7 +8,7 @@ async function prompt(interaction) {
 
     switch (subCommand) {
         case "set":
-            const promptSet = interaction.options.getString('value');
+            const promptSet = interaction.options.getString('prompt');
 
             manageState.AI_CONTEXT = promptSet;
 

@@ -8,7 +8,7 @@ async function model(interaction) {
 
     switch (subCommand) {
         case "set":
-            const modelSet = interaction.options.getString('value');
+            const modelSet = interaction.options.getString('model');
 
             manageState.AI_MODEL = modelSet;
 

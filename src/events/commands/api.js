@@ -8,7 +8,7 @@ async function api(interaction) {
 
     switch (subCommand) {
         case "url":
-            const apiURL = interaction.options.getString('value');
+            const apiURL = interaction.options.getString('url');
 
             manageState.API_URL = apiURL;
 
@@ -18,7 +18,7 @@ async function api(interaction) {
             break;
 
         case "key":
-            const apiKey = interaction.options.getString('value');
+            const apiKey = interaction.options.getString('key');
 
             manageState.API_KEY = apiKey;
 
