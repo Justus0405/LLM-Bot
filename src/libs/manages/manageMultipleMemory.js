@@ -13,6 +13,10 @@ async function manageMultipleMemory(client, message, conversation) {
 
         // Filter the message responses from the bot.
         if (msg.author.id === client.user.id) {
+
+            // Ignore replies that dont belong to the current conversation of the user.
+            if (!msg.mentions.users.has(message.author.id)) return;
+
             conversation.push({
                 role: 'assistant',
                 content: msg.content,
@@ -21,11 +25,12 @@ async function manageMultipleMemory(client, message, conversation) {
             return;
         }
 
-        // Ignore messages that dont mention the bot.
-        if (!msg.mentions.users.has(client.user.id)) return;
-
         // Filter the messages from the user the bot is responding to.
         if (msg.author.id === message.author.id) {
+
+            // Ignore messages that dont mention the bot.
+            // These messages dont count as part of the conversation.
+            if (!msg.mentions.users.has(client.user.id)) return;
 
             // Remove the id of the bot.
             // Converts "@BOT_ID Hello!" -> "Hello!".
