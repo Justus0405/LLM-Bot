@@ -5,7 +5,7 @@ async function sendSuccessMessage(interaction, message) {
     const embed = new EmbedBuilder()
         .setTitle('Success!')
         .setDescription(message)
-        .setColor(0xede693)
+        .setColor('#ede693')
         .setTimestamp();
 
     await interaction.reply({ embeds: [embed], flags: 64 });

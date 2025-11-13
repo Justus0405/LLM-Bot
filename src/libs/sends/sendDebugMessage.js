@@ -1,4 +1,4 @@
-const manageState = require("../manages/manageState");
+const manageState = require('../manages/manageState');
 
 async function sendDebugMessage(message) {
 
