@@ -44,7 +44,7 @@ Moderator Commands:
 1. Clone the repository:
 
 ```shell
-git --depth 1 https://github.com/Justus0405/LLM-Bot.git
+git clone --depth 1 https://github.com/Justus0405/LLM-Bot.git
 ```
 
 2. Navigate to the directory:
