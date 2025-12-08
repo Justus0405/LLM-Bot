@@ -61,6 +61,8 @@ module.exports = (client) => {
             const response = await openai.chat.completions.create({
                 model: manageState.AI_MODEL,
                 messages: conversation,
+                max_tokens: manageState.MAX_TOKENS,
+                temperature: manageState.TEMPERATURE,
             });
 
             // Get the LLMs response.

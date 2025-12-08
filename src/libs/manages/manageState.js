@@ -7,5 +7,7 @@ module.exports = {
     API_KEY: process.env.API_KEY,
     SHOW_THINKING: String(process.env.SHOW_THINKING).toLowerCase() === 'true',
     SHOW_DEBUG: String(process.env.SHOW_DEBUG).toLowerCase() === 'true',
-    ENABLE_MEMORY: String(process.env.ENABLE_MEMORY).toLowerCase() === 'true'
+    ENABLE_MEMORY: String(process.env.ENABLE_MEMORY).toLowerCase() === 'true',
+    MAX_TOKENS: parseInt(process.env.MAX_TOKENS, 10),
+    TEMPERATURE: parseFloat(process.env.TEMPERATURE)
 }

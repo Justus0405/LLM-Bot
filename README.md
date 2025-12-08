@@ -23,17 +23,21 @@ Its designed to be modular, easy to configure, and perfect for integrating AI-po
 
 Moderator Commands:
 
-1. /help — Displays this message
-2. /prompt set — Set the current personality
-3. /prompt get — Get the current personality
-4. /model set — Set the current model
-5. /model get — Get the current model
-6. /api url — Change the current API URL
-7. /api key — Change the current API Key
-8. /thinking — Toggle display of LLM thinking sections
-9. /memory — Toggle message history
-10. /debug — Toggle verbose log messages
-11. /reset — Restart the bot and revert to default settings
+1. /help - Displays this message
+2. /prompt set - Set the current personality
+3. /prompt get - Get the current personality
+4. /model set - Set the current model
+5. /model get - Get the current model
+6. /api url - Change the current API URL
+7. /api key - Change the current API Key
+8. /limit set - Set the current token limit
+9. /limit get - Get the current token limit
+10. /temperature set - Set the current temperature
+11. /temperature get - Get the current temperature
+12. /thinking - Toggle display of LLM thinking sections
+13. /memory - Toggle message history
+14. /debug - Toggle verbose log messages
+15. /reset - Restart the bot and revert to default settings
 
 > [!NOTE]
 > All of these configuration options above can & need to be defined in .env .

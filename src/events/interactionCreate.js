@@ -3,6 +3,8 @@ const helpCommand = require('./commands/help')
 const promptCommand = require('./commands/prompt')
 const modelCommand = require('./commands/model')
 const apiCommand = require('./commands/api')
+const limitCommand = require('./commands/limit')
+const temperatureCommand = require('./commands/temperature')
 const thinkingCommand = require('./commands/thinking')
 const memoryCommand = require('./commands/memory')
 const debugCommand = require('./commands/debug')
@@ -28,6 +30,12 @@ module.exports = (client) => {
                 break;
             case 'api':
                 apiCommand(interaction);
+                break;
+            case 'limit':
+                limitCommand(interaction);
+                break;
+            case 'temperature':
+                temperatureCommand(interaction);
                 break;
             case 'thinking':
                 thinkingCommand(interaction);

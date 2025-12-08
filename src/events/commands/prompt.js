@@ -12,7 +12,7 @@ async function prompt(interaction) {
 
             manageState.AI_CONTEXT = promptSet;
 
-            sendDebugMessage(`Changed the prompt to: ${prompt}`);
+            sendDebugMessage(`Changed the prompt to: ${promptSet}`);
 
             await sendSuccessMessage(interaction, `Successfully changed the prompt to:\n \`\`\`${promptSet}\`\`\``);
             break;

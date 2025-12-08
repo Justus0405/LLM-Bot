@@ -91,6 +91,56 @@ const commands = [
         ]
     },
     {
+        name: 'limit',
+        description: 'Change the bots token limit',
+        default_member_permissions: PermissionFlagsBits.BanMembers.toString(),
+        options: [
+            {
+                name: 'set',
+                description: 'Set the current token limit',
+                type: ApplicationCommandOptionType.Subcommand,
+                options: [
+                    {
+                        name: 'limit',
+                        description: 'The limit to set',
+                        type: ApplicationCommandOptionType.String,
+                        required: true
+                    }
+                ]
+            },
+            {
+                name: 'get',
+                description: 'Get the current token limit',
+                type: ApplicationCommandOptionType.Subcommand
+            }
+        ]
+    },
+    {
+        name: 'temperature',
+        description: 'Change the bots temperature',
+        default_member_permissions: PermissionFlagsBits.BanMembers.toString(),
+        options: [
+            {
+                name: 'set',
+                description: 'Set the current temperature',
+                type: ApplicationCommandOptionType.Subcommand,
+                options: [
+                    {
+                        name: 'temperature',
+                        description: 'The temperature to set',
+                        type: ApplicationCommandOptionType.String,
+                        required: true
+                    }
+                ]
+            },
+            {
+                name: 'get',
+                description: 'Get the current temperature',
+                type: ApplicationCommandOptionType.Subcommand
+            }
+        ]
+    },
+    {
         name: 'thinking',
         description: 'Toggle display of LLM thinking sections',
         default_member_permissions: PermissionFlagsBits.BanMembers.toString(),
