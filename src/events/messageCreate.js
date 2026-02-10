@@ -78,13 +78,9 @@ module.exports = (client) => {
                 // This is for formatting the thinking section into a code block.
                 messageContent = responseMessage.replace("<think>", "```thoughts\n").replace("</think>", "```\n");
             }
-            else if (manageState.SHOW_THINKING === false) {
+            else {
                 // This is for removing the thinking section.
                 messageContent = responseMessage.replace(/<think>[\s\S]*?<\/think>/g, '');
-            }
-            else {
-                // No formatting needed.
-                messageContent = responseMessage;
             }
 
             // Split the response if bigger than 2000 characters which is discords message limit for bots.
