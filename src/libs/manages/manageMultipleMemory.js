@@ -24,10 +24,10 @@ async function manageMultipleMemory(client, message, conversation) {
             // Ignore replies that dont belong to the current conversation of the user.
             if (!msg.mentions.users.has(message.author.id)) return;
 
-            // If the previous message is also a assistant message discard it.
+            // If the previous or first message is a assistant message discard it.
             // This fixes llamacpp error:
             // Error: Jinja Exception: Conversation roles must alternate user/assistant/user/assistant/...
-            if (prevRole !== 'user' && prevRole !== 'none') return;
+            if (prevRole !== 'user') return;
 
             conversation.push({
                 role: 'assistant',
