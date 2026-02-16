@@ -36,7 +36,7 @@ Moderator Commands:
 - `/temperature get` - Get the current temperature
 - `/thinking` - Toggle display of LLM thinking sections
 - `/memory set` - Set the current memory length
-- `/memory ge`t - Get the current memory length
+- `/memory get` - Get the current memory length
 - `/memory toggle` - Toggle message history
 - `/debug` - Toggle verbose log messages
 - `/reset` - Restart the bot and revert to default settings
