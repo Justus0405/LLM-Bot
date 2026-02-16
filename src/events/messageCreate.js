@@ -94,7 +94,16 @@ module.exports = (client) => {
             }
         } catch (error) {
             console.log(error)
-            await message.channel.send('Something went wrong, please try again.');
+
+            if (manageState.SHOW_DEBUG === true) {
+
+                await message.channel.send(`An error has occurred.\n\`\`\`${error.stack.slice(0, 1900)}\`\`\``);
+
+            } else {
+
+                await message.channel.send('Something went wrong, please try again.');
+            }
+
         } finally {
             // After everything is done, stop sending typing packets.
             clearInterval(sendTypingInterval);
