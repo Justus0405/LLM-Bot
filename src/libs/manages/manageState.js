@@ -8,6 +8,7 @@ module.exports = {
     SHOW_THINKING: String(process.env.SHOW_THINKING).toLowerCase() === 'true',
     SHOW_DEBUG: String(process.env.SHOW_DEBUG).toLowerCase() === 'true',
     ENABLE_MEMORY: String(process.env.ENABLE_MEMORY).toLowerCase() === 'true',
+    MEMORY_LENGTH: parseInt(process.env.MEMORY_LENGTH, 10),
     MAX_TOKENS: parseInt(process.env.MAX_TOKENS, 10),
     TEMPERATURE: parseFloat(process.env.TEMPERATURE)
 }

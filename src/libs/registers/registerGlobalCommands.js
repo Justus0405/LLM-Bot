@@ -155,15 +155,40 @@ const commands = [
     },
     {
         name: 'memory',
-        description: 'Toggle message history',
+        description: 'Configure the memory and history length',
         default_member_permissions: PermissionFlagsBits.BanMembers.toString(),
         options: [
             {
-                name: 'enabled',
-                description: 'true or false',
-                type: ApplicationCommandOptionType.Boolean,
-                required: true
+                name: 'set',
+                description: 'Set the current memory length',
+                type: ApplicationCommandOptionType.Subcommand,
+                options: [
+                    {
+                        name: 'length',
+                        description: 'The memory length to set',
+                        type: ApplicationCommandOptionType.String,
+                        required: true
+                    }
+                ]
             },
+            {
+                name: 'get',
+                description: 'Get the current memory length',
+                type: ApplicationCommandOptionType.Subcommand
+            },
+            {
+                name: 'toggle',
+                description: 'Toggle message history',
+                type: ApplicationCommandOptionType.Subcommand,
+                options: [
+                    {
+                        name: 'enabled',
+                        description: 'true or false',
+                        type: ApplicationCommandOptionType.Boolean,
+                        required: true
+                    },
+                ]
+            }
         ]
     },
     {

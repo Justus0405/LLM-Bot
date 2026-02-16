@@ -1,7 +1,11 @@
+const sendDebugMessage = require('../sends/sendDebugMessage');
+const manageState = require('./manageState');
+
 async function manageMultipleMemory(client, message, conversation) {
 
-    // Get the last 20 messages.
-    let prevMessages = await message.channel.messages.fetch({ limit: 20 });
+    // Get the last configured amount of messages.
+    sendDebugMessage(`Getting the history with memory length of: ${manageState.MEMORY_LENGTH}`);
+    let prevMessages = await message.channel.messages.fetch({ limit: manageState.MEMORY_LENGTH });
 
     // Use alternating user and assistant role which is required by some APIs.
     // NOTE:
