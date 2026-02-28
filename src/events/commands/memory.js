@@ -18,9 +18,16 @@ async function memory(interaction) {
             break;
 
         case "get":
+            const memoryState = manageState.ENABLE_MEMORY
+
             const memoryGet = manageState.MEMORY_LENGTH;
 
-            await sendSuccessMessage(interaction, `Current memory length:\n \`\`\`${memoryGet} messages\`\`\``);
+            if (memoryState === true) {
+                await sendSuccessMessage(interaction, `Current memory length:\n \`\`\`${memoryGet} messages\`\`\``);
+            } else {
+                await sendSuccessMessage(interaction, `\`\`\`Memory is currently disabled\`\`\``);
+            }
+
             break;
 
         case "toggle":
