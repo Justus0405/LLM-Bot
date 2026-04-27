@@ -1,10 +1,17 @@
+const sendDebugMessage = require('../libs/sends/sendDebugMessage');
+const manageState = require('../libs/manages/manageState');
 const { ActivityType } = require('discord.js');
 
 module.exports = (client) => {
-    // This function runs code once the bot is ready.
 
+    // This function runs code once the bot is ready.
     client.once('clientReady', async () => {
+
+        // Print this message when the bot is loaded.
         console.log(`[  ] ${client.user.tag} is online!`);
+
+        // Debug log for non-sensitive enviroment variables.
+        sendDebugMessage(`Using model ${manageState.AI_MODEL} via ${manageState.API_URL}`);
 
         // Set Presence.
         const updatePresence = () => {
